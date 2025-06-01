@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>terminal</title>
   <style>
     body {
@@ -199,10 +199,9 @@
 </head>
 <body>
   <div class="circuit-board"></div>
-  
   <div class="container">
     <div class="search-bar">
-      <input type="text" class="search-input" placeholder="search..." id="search">
+      <input type="text" class="search-input" placeholder="search..." id="search" />
     </div>
 
     <div class="clock-container">
@@ -216,7 +215,7 @@
     <div class="main-content">
       <!-- left panel -->
       <div class="panel">
-        <div class="header">~/quick-links</div>
+        <div class="header">~/links</div>
         <div class="tree" id="main-tree">
           <ul>
             <li>
@@ -235,13 +234,12 @@
               </ul>
             </li>
             <li>
-              <span class="folder">dev</span>
+              <span class="folder">tools</span>
               <ul class="folder-items">
-                <li><a href="https://github.com" class="link">github</a></li>
-                <!--<li><a href="https://replit.com" class="link">replit</a></li> --->
-                <!--<li><a href="https://codepen.io" class="link">codepen</a></li> -->
-                <!--<li><a href="https://www.codecademy.com" class="link">codecademy</a></li> -->
-                <!--<li><a href="https://www.w3schools.com" class="link">w3schools</a></li> -->
+                <li><a href="https://addons.mozilla.org" class="link">addons</a></li>
+                <li><a href="https://translate.google.com" class="link">translate</a></li>
+                <li><a href="https://cobalt.tools" class="link">cobalt</a></li>
+                <li><a href="https://www.virustotal.com" class="link">virustotal</a></li>
               </ul>
             </li>
           </ul>
@@ -254,13 +252,23 @@
         <div class="tree" id="productivity-tree">
           <ul>
             <li>
-              <span class="folder">coding</span>
+              <span class="folder">dev</span>
               <ul class="folder-items">
+                <li><a href="https://github.com" class="link">github</a></li>
                 <li><a href="https://developer.mozilla.org" class="link">mdn web docs</a></li>
+                <!--<li><a href="https://replit.com" class="link">replit</a></li>-->
+                <!--<li><a href="https://codepen.io" class="link">codepen</a></li>-->
+                <!--<li><a href="https://www.codecademy.com" class="link">codecademy</a></li>-->
+                <!--<li><a href="https://www.w3schools.com" class="link">w3schools</a></li>-->
+              </ul>
+            </li>
+            <li>
+              <span class="folder">learn</span>
+              <ul class="folder-items">
                 <li><a href="https://stackoverflow.com" class="link">stackoverflow</a></li>
                 <li><a href="https://www.freecodecamp.org" class="link">freecodecamp</a></li>
                 <li><a href="https://www.theodinproject.com" class="link">the odin project</a></li>
-                <li><a href="https://exercism.org" class="link">exercism</a></li>
+                <!--<li><a href="https://exercism.org" class="link">exercism</a></li>-->
               </ul>
             </li>
             <li>
@@ -269,17 +277,8 @@
                 <li><a href="https://tryhackme.com" class="link">tryhackme</a></li>
                 <li><a href="https://www.hackthebox.com" class="link">hackthebox</a></li>
                 <li><a href="https://overthewire.org/wargames/" class="link">overthewire</a></li>
-                <li><a href="https://owasp.org/www-project-top-ten/" class="link">owasp top 10</a></li>
-                <li><a href="https://www.hacksplaining.com" class="link">hacksplaining</a></li>
-              </ul>
-            </li>
-            <li>
-              <span class="folder">tools</span>
-              <ul class="folder-items">
-                <li><a href="https://addons.mozilla.org" class="link">addons</a></li>
-                <li><a href="https://translate.google.com" class="link">translate</a></li>
-                <li><a href="https://cobalt.tools" class="link">cobalt</a></li>
-                <li><a href="https://www.virustotal.com" class="link">virustotal</a></li>
+                <!--<li><a href="https://owasp.org/www-project-top-ten/" class="link">owasp top 10</a></li>-->
+                <!--<li><a href="https://www.hacksplaining.com" class="link">hacksplaining</a></li>-->
               </ul>
             </li>
           </ul>
@@ -291,15 +290,13 @@
   </div>
 
   <script>
-    // gestion du pliage/dépliage des dossiers
     document.querySelectorAll('.folder').forEach(folder => {
-      folder.addEventListener('click', function() {
+      folder.addEventListener('click', function () {
         this.classList.toggle('collapsed');
       });
     });
 
-    // gestion de la recherche
-    document.getElementById('search').addEventListener('keypress', function(e) {
+    document.getElementById('search').addEventListener('keypress', function (e) {
       if (e.key === 'Enter') {
         const query = this.value.trim();
         if (query) {
@@ -309,42 +306,24 @@
       }
     });
 
-    // horloge en temps réel plus discrète
     function updateClock() {
       const now = new Date();
       const time = now.toLocaleTimeString('en-US', { hour12: false });
-      const date = now.toLocaleDateString('en-US', { 
-        weekday: 'short', 
-        month: 'short', 
+      const date = now.toLocaleDateString('en-US', {
+        weekday: 'short',
+        month: 'short',
         day: 'numeric'
       }).toLowerCase();
-      
       document.getElementById("time-display").textContent = `[${time}]`;
       document.getElementById("date-display").textContent = ` ${date}`;
     }
     setInterval(updateClock, 1000);
     updateClock();
 
-    // animation ascii (chat hacker)
     const animationFrames = [
-      `
-       /\\_/\\
-      ( o.o )
-       > ^ <
-      /_..._\\
-      `,
-      `
-       /\\_/\\
-      ( -.- )
-       > ^ <
-      /_..._\\
-      `,
-      `
-       /\\_/\\
-      ( @.@ )
-       > ^ <
-      /_..._\\
-      `
+      `\n /\\_/\\\n( o.o )\n > ^ <\n/_..._\\\n`,
+      `\n /\\_/\\\n( -.- )\n > ^ <\n/_..._\\\n`,
+      `\n /\\_/\\\n( @.@ )\n > ^ <\n/_..._\\\n`
     ];
 
     let currentFrame = 0;
@@ -355,14 +334,12 @@
     setInterval(animate, 800);
     animate();
 
-    // Petit délai pour forcer le focus après le chargement complet
-  window.addEventListener("load", () => {
-    setTimeout(() => {
-      const input = document.getElementById("search");
-      if (input) input.focus();
-    }, 100); // Tu peux tester avec 300 si ça bug encore
-  });
-
+    window.addEventListener("load", () => {
+      setTimeout(() => {
+        const input = document.getElementById("search");
+        if (input) input.focus();
+      }, 100);
+    });
   </script>
 </body>
 </html>
