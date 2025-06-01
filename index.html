@@ -354,6 +354,14 @@
     }
     setInterval(animate, 800);
     animate();
+
+      window.onload = () => {
+    const searchInput = document.getElementById("search");
+    if (searchInput) {
+      searchInput.focus();
+    }
+  };
+
   </script>
 </body>
 </html>
