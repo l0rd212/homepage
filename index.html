@@ -355,12 +355,13 @@
     setInterval(animate, 800);
     animate();
 
-      window.onload = () => {
-    const searchInput = document.getElementById("search");
-    if (searchInput) {
-      searchInput.focus();
-    }
-  };
+    // Petit délai pour forcer le focus après le chargement complet
+  window.addEventListener("load", () => {
+    setTimeout(() => {
+      const input = document.getElementById("search");
+      if (input) input.focus();
+    }, 100); // Tu peux tester avec 300 si ça bug encore
+  });
 
   </script>
 </body>
