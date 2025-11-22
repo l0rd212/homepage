@@ -291,6 +291,22 @@
   </div>
 
   <script>
+    function forceFocus() {
+  const input = document.getElementById("search");
+  if (!input) return;
+
+  input.focus();
+
+  // si Firefox refuse le focus, on retente légèrement après
+  if (document.activeElement !== input) {
+    setTimeout(() => input.focus(), 50);
+    setTimeout(() => input.focus(), 150);
+    setTimeout(() => input.focus(), 300);
+  }
+}
+
+document.addEventListener("DOMContentLoaded", forceFocus);
+window.addEventListener("load", forceFocus);
     document.querySelectorAll('.folder').forEach(folder => {
       folder.addEventListener('click', function () {
         this.classList.toggle('collapsed');
@@ -344,4 +360,5 @@
   </script>
 </body>
 </html>
+
 
